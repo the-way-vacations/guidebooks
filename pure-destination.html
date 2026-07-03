@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ============================================================= -->
+<!-- PURE DESTINation — Destin, FL       -->
+<!-- Search "EDIT" to find every spot you should update.          -->
+<!-- ============================================================= -->
+<title>Pure DESTINation — Guest Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#FBFAF6;        /* sugar-white quartz sand */
+    --sand-deep:#ECEAE0;   /* warm panel */
+    --sea:#0A6157;         /* deep emerald Gulf */
+    --sea-mid:#0F8274;     /* emerald water */
+    --glass:#5FD3C2;       /* bright seafoam */
+    --coral:#F2895E;       /* Gulf-coast sunset */
+    --ink:#123B36;         /* text */
+    --ink-soft:#4C6862;    /* muted text */
+    --line:rgba(10,97,87,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'DM Sans',system-ui,sans-serif;
+    background:var(--sand);color:var(--ink);line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--sea-mid);text-decoration:none}
+
+  .shell{max-width:1180px;margin:0 auto;display:flex}
+
+  /* Sidebar (desktop) */
+  .side{
+    width:250px;flex-shrink:0;position:sticky;top:0;height:100vh;
+    padding:2.4rem 1.6rem;display:flex;flex-direction:column;
+    border-right:1px solid var(--line);
+  }
+  .brand{margin-bottom:2rem}
+  .brand .eyebrow{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--glass);font-weight:700;margin-bottom:.5rem}
+  .brand h1{font-family:'Fraunces',serif;font-weight:600;font-size:1.7rem;line-height:1.05;color:var(--sea)}
+  .side nav{display:flex;flex-direction:column;gap:.15rem;margin-top:.5rem}
+  .side nav a{display:flex;align-items:center;gap:.7rem;padding:.7rem .85rem;border-radius:12px;color:var(--ink-soft);font-weight:500;font-size:.95rem;transition:all .18s ease}
+  .side nav a .dot{width:8px;height:8px;border-radius:50%;background:var(--line);flex-shrink:0;transition:all .18s ease}
+  .side nav a:hover{background:var(--sand-deep);color:var(--sea)}
+  .side nav a.active{background:var(--sea);color:#fff}
+  .side nav a.active .dot{background:var(--glass);box-shadow:0 0 0 4px rgba(95,211,194,.25)}
+  .side .foot{margin-top:auto;font-size:.78rem;color:var(--ink-soft);line-height:1.5}
+
+  .topbar{display:none}
+  main{flex:1;min-width:0;padding:0 0 4rem}
+
+  /* Hero */
+  .hero{
+    position:relative;padding:4rem 2.6rem 3.4rem;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 85% -10%, rgba(95,211,194,.4), transparent 60%),
+      linear-gradient(160deg,var(--sea) 0%, var(--sea-mid) 100%);
+    color:#fff;border-radius:0 0 28px 28px;
+  }
+  .hero .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--glass);font-weight:700;margin-bottom:1rem}
+  .hero h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.02;letter-spacing:-.01em;max-width:14ch}
+  .hero p{margin-top:1.1rem;max-width:46ch;color:rgba(255,255,255,.88);font-size:1.05rem}
+  .hero .loc{margin-top:1rem;display:inline-flex;align-items:center;gap:.45rem;font-size:.9rem;color:var(--glass);font-weight:600}
+  .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:46px;display:block}
+
+  .section{padding:3rem 2.6rem 1rem;scroll-margin-top:1rem}
+  .section .num{font-family:'Fraunces',serif;font-size:.9rem;color:var(--coral);font-weight:600;letter-spacing:.05em}
+  .section h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.9rem;color:var(--sea);margin:.2rem 0 1.4rem;line-height:1.1}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+  .card{background:var(--sand-deep);border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.4rem}
+  .card .label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-bottom:.35rem}
+  .card .value{font-family:'Fraunces',serif;font-size:1.35rem;color:var(--sea);font-weight:600;word-break:break-word}
+  .card .sub{font-size:.9rem;color:var(--ink-soft);margin-top:.3rem}
+
+  .prose p{margin-bottom:.9rem;color:var(--ink)}
+  .prose ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin:.4rem 0 1rem}
+  .prose li{position:relative;padding-left:1.7rem;color:var(--ink)}
+  .prose li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--glass)}
+  .prose li strong{color:var(--sea)}
+
+  .rec{display:flex;flex-direction:column;gap:.9rem}
+  .rec-item{display:flex;gap:1rem;padding:1.1rem 1.3rem;background:var(--sand-deep);border:1px solid var(--line);border-radius:16px;align-items:flex-start}
+  .rec-item .tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#fff;background:var(--sea-mid);padding:.28rem .55rem;border-radius:999px;white-space:nowrap;flex-shrink:0;margin-top:.15rem}
+  .rec-item .tag.eat{background:var(--coral)}
+  .rec-item .tag.do{background:var(--sea-mid)}
+  .rec-item .tag.sip{background:var(--glass);color:var(--ink)}
+  .rec-item h4{font-family:'Fraunces',serif;font-size:1.15rem;color:var(--sea);font-weight:600}
+  .rec-item p{font-size:.92rem;color:var(--ink-soft);margin-top:.2rem}
+
+  .callout{background:linear-gradient(135deg,rgba(95,211,194,.18),rgba(242,137,94,.1));border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.5rem;margin-top:1rem;display:flex;gap:.9rem;align-items:flex-start}
+  .callout .ico{font-size:1.4rem;line-height:1}
+  .callout strong{color:var(--sea)}
+
+  footer{margin:3rem 2.6rem 0;padding-top:1.6rem;border-top:1px solid var(--line);font-size:.9rem;color:var(--ink-soft)}
+  footer .name{font-family:'Fraunces',serif;color:var(--sea);font-size:1.1rem;font-weight:600}
+
+  @media(max-width:820px){
+    .side{display:none}
+    .shell{flex-direction:column}
+    .topbar{display:block;position:sticky;top:0;z-index:20;background:rgba(251,250,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .topbar .tb-brand{padding:.9rem 1.2rem .3rem;font-family:'Fraunces',serif;color:var(--sea);font-weight:600;font-size:1.15rem}
+    .topbar .chips{display:flex;gap:.5rem;overflow-x:auto;padding:.5rem 1.2rem .8rem;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .topbar .chips::-webkit-scrollbar{display:none}
+    .chips-wrap{position:relative}
+    .chips-wrap .fade{position:absolute;top:0;right:0;bottom:0;width:52px;pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:.5rem;padding-bottom:.3rem;background:linear-gradient(90deg,transparent,var(--sand) 72%);opacity:1;transition:opacity .25s ease}
+    .chips-wrap.at-end .fade{opacity:0}
+    .chips-wrap .fade svg{width:16px;height:16px;stroke:var(--sea);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1.6s ease-in-out infinite}
+    @keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
+    .topbar .chips a{white-space:nowrap;padding:.5rem .9rem;border-radius:999px;background:var(--sand-deep);color:var(--ink-soft);font-size:.85rem;font-weight:500;border:1px solid var(--line)}
+    .topbar .chips a.active{background:var(--sea);color:#fff;border-color:var(--sea)}
+    .hero{padding:2.6rem 1.4rem 2.6rem;border-radius:0 0 22px 22px}
+    .section{padding:2.2rem 1.4rem .6rem}
+    footer{margin:2.4rem 1.4rem 0}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="brand">
+      <div class="eyebrow">Guest Guide</div>
+      <h1>Pure DESTINation</h1>
+    </div>
+    <nav id="sideNav">
+      <a href="#welcome" data-sec="welcome"><span class="dot"></span>Welcome</a>
+      <a href="#arrival" data-sec="arrival"><span class="dot"></span>Check-in &amp; Wifi</a>
+      <a href="#house" data-sec="house"><span class="dot"></span>House &amp; Appliances</a>
+      <a href="#beach" data-sec="beach"><span class="dot"></span>Beach Service</a>
+      <a href="#local" data-sec="local"><span class="dot"></span>Food &amp; Local</a>
+      <a href="#contacts" data-sec="contacts"><span class="dot"></span>Contacts</a>
+    </nav>
+    <div class="foot">
+      <!-- EDIT: host contact -->
+      Questions? Text your host<br><strong>(555) 012-3456</strong>
+    </div>
+  </aside>
+
+  <!-- MOBILE NAV -->
+  <div class="topbar">
+    <div class="tb-brand">Pure DESTINation</div>
+    <div class="chips-wrap" id="chipsWrap">
+      <div class="chips" id="chipNav">
+        <a href="#welcome" data-sec="welcome">Welcome</a>
+        <a href="#arrival" data-sec="arrival">Check-in &amp; Wifi</a>
+        <a href="#house" data-sec="house">House</a>
+        <a href="#beach" data-sec="beach">Beach</a>
+        <a href="#local" data-sec="local">Food &amp; Local</a>
+        <a href="#contacts" data-sec="contacts">Contacts</a>
+      </div>
+      <span class="fade" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+    <header class="hero" id="welcome">
+      <div class="eyebrow">Welcome to</div>
+      <h2>Pure DESTINation</h2>
+      <!-- EDIT: welcome copy -->
+      <p>Sugar-white sand, that famous emerald water, and everything you need for an easy stay right below. Tap any section to jump straight to it.</p>
+      <span class="loc">◈ Destin, FL · The Emerald Coast</span>
+      <svg class="wave" viewBox="0 0 1440 46" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,24 C240,48 480,0 720,20 C960,40 1200,8 1440,26 L1440,46 L0,46 Z" fill="#FBFAF6"/>
+      </svg>
+    </header>
+
+    <!-- ARRIVAL -->
+    <section class="section" id="arrival">
+      <div class="num">01</div>
+      <h3>Check-in &amp; Wifi</h3>
+      <!-- EDIT: all values below -->
+      <div class="grid">
+        <div class="card"><div class="label">Check-in</div><div class="value">After 4:00 PM</div><div class="sub">Self check-in — door code below</div></div>
+        <div class="card"><div class="label">Check-out</div><div class="value">By 10:00 AM</div><div class="sub">Just start the dishwasher on your way out</div></div>
+        <div class="card"><div class="label">Door Code</div><div class="value">2 4 6 8 #</div><div class="sub">Keypad at the unit door — press # to lock</div></div>
+        <div class="card"><div class="label">Wifi Network</div><div class="value">PureDestination_Guest</div><div class="sub">Password: emeraldwater</div></div>
+      </div>
+      <div class="callout"><span class="ico">🅿️</span><div><strong>Parking:</strong> Two assigned covered spots in the garage. Bring the parking passes on the entry table up to your dash so you don't get ticketed.</div></div>
+    </section>
+
+    <!-- HOUSE -->
+    <section class="section" id="house">
+      <div class="num">02</div>
+      <h3>House &amp; Appliances</h3>
+      <div class="prose">
+        <!-- EDIT: house rules -->
+        <p>A few small things to keep the place happy for you and the next guests:</p>
+        <ul>
+          <li><strong>No smoking</strong> indoors — the balcony is all yours, please use the ashtray.</li>
+          <li><strong>Rinse the sand off</strong> at the ground-floor beach shower before coming up. Quartz sand gets everywhere!</li>
+          <li><strong>Quiet hours</strong> after 10 PM — sound carries between the units and over the water.</li>
+          <li><strong>Trash</strong> goes down the chute at the end of the hall; recycling bins are in the garage.</li>
+        </ul>
+        <p>Appliance quick-notes:</p>
+        <ul>
+          <li><strong>Thermostat</strong> is by the kitchen — please keep it at 72°F or higher when the A/C runs so it doesn't freeze up in the humidity.</li>
+          <li><strong>Beach gear</strong> (chairs, umbrella, cooler, boogie boards) is in the front closet.</li>
+          <li><strong>Washer/dryer</strong> is in the hall closet; pods are in the basket on the shelf.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- BEACH SERVICE -->
+    <section class="section" id="beach">
+      <div class="num">03</div>
+      <h3>Beach Service</h3>
+      <div class="prose">
+        <!-- EDIT: beach service details -->
+        <p>Beach service is included March through October — two loungers and an umbrella set up for you daily, so there's no dragging gear across the hot sand.</p>
+        <ul>
+          <li><strong>Where:</strong> Look for the attendant's chairs on the sand directly in front of the building.</li>
+          <li><strong>What's included:</strong> Two chairs and one umbrella, set out each morning by 9 AM.</li>
+          <li><strong>Just give the attendant the unit name</strong> — the set is reserved under Pure DESTINation.</li>
+        </ul>
+      </div>
+      <div class="callout"><span class="ico">🌊</span><div><strong>Beach flags matter here:</strong> green is calm, yellow is caution, red means dangerous surf, and double red means the water is closed. Destin flies them daily near the beach access — always check before you swim.</div></div>
+    </section>
+
+    <!-- LOCAL -->
+    <section class="section" id="local">
+      <div class="num">04</div>
+      <h3>Food &amp; Local Favorites</h3>
+      <p class="prose" style="margin-bottom:1.1rem">Welcome to the World's Luckiest Fishing Village. The Destin Harbor and HarborWalk Village are the heart of the action — here are a few local favorites to point you in the right direction:</p>
+      <div class="rec">
+        <div class="rec-item"><span class="tag eat">Eat</span><div><h4>Dewey Destin's Seafood</h4><p>Family-run since the 1940s by the family the town is named for. A no-frills waterside shack with some of the freshest fish around. Cash is king — bring some.</p></div></div>
+        <div class="rec-item"><span class="tag eat">Eat</span><div><h4>The Back Porch</h4><p>A Destin classic since 1974 and the birthplace of the amberjack sandwich. Casual, right on the Gulf, unbeatable water views.</p></div></div>
+        <div class="rec-item"><span class="tag eat">Eat</span><div><h4>Boshamps Seafood &amp; Oyster House</h4><p>Southern-style Gulf-to-table on the harbor with a big outdoor deck and live music on weekends. Great for groups.</p></div></div>
+        <div class="rec-item"><span class="tag sip">Sip</span><div><h4>The Edge SkyBar</h4><p>Rooftop bar over the harbor — arrive about 30 minutes before sunset for a seat. Live music most nights.</p></div></div>
+        <div class="rec-item"><span class="tag sip">Sip</span><div><h4>AJ's Seafood &amp; Oyster Bar</h4><p>Lively harborfront hangout — steam pots, Boom Boom Shrimp, and nightly live music. The go-to for a fun night out.</p></div></div>
+        <div class="rec-item"><span class="tag do">Do</span><div><h4>Crab Island</h4><p>The famous shallow sandbar just off the Destin bridge — rent a pontoon or catch a tour and float in the emerald shallows.</p></div></div>
+        <div class="rec-item"><span class="tag do">Do</span><div><h4>Henderson Beach State Park</h4><p>Protected sugar-white dunes and nature trails right in town — a quieter beach morning away from the crowds.</p></div></div>
+        <div class="rec-item"><span class="tag do">Do</span><div><h4>Deep-sea fishing charter</h4><p>It's the World's Luckiest Fishing Village for a reason. Half- and full-day charters leave from the harbor daily — book ahead in season.</p></div></div>
+      </div>
+      <div class="callout"><span class="ico">🍩</span><div><strong>Sweet tip:</strong> Start a morning at the Donut Hole Bakery Café — a longtime Destin institution. Go early; the line moves but it builds.</div></div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="section" id="contacts">
+      <div class="num">05</div>
+      <h3>Contacts</h3>
+      <!-- EDIT: swap in your real numbers -->
+      <div class="grid">
+        <div class="card"><div class="label">Your Host</div><div class="value">(555) 012-3456</div><div class="sub">Text is fastest — we usually reply within the hour</div></div>
+        <div class="card"><div class="label">Property Manager</div><div class="value">(555) 012-7890</div><div class="sub">Maintenance &amp; lockouts, 8 AM–8 PM</div></div>
+        <div class="card"><div class="label">Emergencies</div><div class="value">911</div><div class="sub">Police, fire, medical</div></div>
+        <div class="card"><div class="label">Okaloosa Sheriff (non-emergency)</div><div class="value">(850) 651-7400</div><div class="sub">Noise, parking, minor issues</div></div>
+        <div class="card"><div class="label">Nearest ER</div><div class="value">HCA FW-Destin ER</div><div class="sub">Destin freestanding ER, Emerald Coast Pkwy — ~10 min</div></div>
+        <div class="card"><div class="label">Ride</div><div class="value">Uber / Lyft</div><div class="sub">Both run Destin &amp; the harbor reliably</div></div>
+      </div>
+      <div class="callout"><span class="ico">📍</span>
+        <!-- EDIT: full property address -->
+        <div><strong>Property address:</strong> 000 Scenic Hwy 98, Unit 000, Destin, FL 32541. Handy for food delivery and rideshares.</div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="name">Pure DESTINation</div>
+      <!-- EDIT: sign-off + contact -->
+      <p>We hope you have a wonderful stay on the Emerald Coast. Anything at all — text your host at (555) 012-3456.</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('[data-sec]');
+  const sections = ['welcome','arrival','house','beach','local','contacts'].map(id => document.getElementById(id));
+  const setActive = id => links.forEach(l => l.classList.toggle('active', l.dataset.sec === id));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) setActive(e.target.id); });
+  }, {rootMargin:'-30% 0px -60% 0px', threshold:0});
+  sections.forEach(s => s && obs.observe(s));
+
+  const chipNav = document.getElementById('chipNav');
+  const chipsWrap = document.getElementById('chipsWrap');
+  const updateFade = () => {
+    if(!chipNav || !chipsWrap) return;
+    const atEnd = chipNav.scrollLeft + chipNav.clientWidth >= chipNav.scrollWidth - 4;
+    const noOverflow = chipNav.scrollWidth <= chipNav.clientWidth + 4;
+    chipsWrap.classList.toggle('at-end', atEnd || noOverflow);
+  };
+  if(chipNav){ chipNav.addEventListener('scroll', updateFade); window.addEventListener('resize', updateFade); updateFade(); }
+  document.querySelectorAll('#chipNav a').forEach(a => a.addEventListener('click', () => a.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'})));
+</script>
+</body>
+</html>
