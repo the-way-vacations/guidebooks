@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- ============================================================= -->
-<!-- PURE DESTINation — Destin, FL       -->
+<!-- PURE DESTINation — Southbay by the Gulf, Destin, FL           -->
 <!-- Search "EDIT" to find every spot you should update.          -->
 <!-- ============================================================= -->
 <title>Pure DESTINation — Guest Guide</title>
@@ -65,7 +65,10 @@
   .hero .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--glass);font-weight:700;margin-bottom:1rem}
   .hero h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.02;letter-spacing:-.01em;max-width:14ch}
   .hero p{margin-top:1.1rem;max-width:46ch;color:rgba(255,255,255,.88);font-size:1.05rem}
-  .hero .loc{margin-top:1rem;display:inline-flex;align-items:center;gap:.45rem;font-size:.9rem;color:var(--glass);font-weight:600}
+  .hero .loc{display:inline-flex;align-items:center;gap:.45rem;font-size:.9rem;color:var(--glass);font-weight:600}
+  .hero .address{margin-top:1.2rem;display:flex;flex-direction:column;gap:.4rem}
+  .hero .address strong{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:#fff;line-height:1.3}
+  .hero .addr-note{font-size:.82rem;color:rgba(255,255,255,.72)}
   .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:46px;display:block}
 
   .section{padding:3rem 2.6rem 1rem;scroll-margin-top:1rem}
@@ -90,8 +93,40 @@
   .rec-item .tag.eat{background:var(--coral)}
   .rec-item .tag.do{background:var(--sea-mid)}
   .rec-item .tag.sip{background:var(--glass);color:var(--ink)}
+  .rec-item .tag.rent{background:var(--sea)}
+  .rec-item .tag.treat{background:var(--glass);color:var(--ink)}
+  .rec-item .tag.shop{background:var(--sea)}
   .rec-item h4{font-family:'Fraunces',serif;font-size:1.15rem;color:var(--sea);font-weight:600}
+  .rec-item h4 .walkbadge{display:inline-block;font-family:'DM Sans',system-ui,sans-serif;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--sea);background:rgba(95,211,194,.32);border:1px solid var(--line);padding:.12rem .45rem;border-radius:999px;margin-left:.45rem;vertical-align:middle;white-space:nowrap}
   .rec-item p{font-size:.92rem;color:var(--ink-soft);margin-top:.2rem}
+  .rec-item .meta{font-size:.85rem;margin-top:.5rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:.3rem .6rem}
+  .rec-item .meta a{color:var(--sea-mid);font-weight:600}
+
+  /* Tabs (Food & Local categories) */
+  .tabs{position:relative}
+  .tabs input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}
+  .tablist{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+  .tab{cursor:pointer;padding:.55rem 1rem;border-radius:999px;background:var(--sand-deep);border:1px solid var(--line);color:var(--ink-soft);font-weight:600;font-size:.9rem;white-space:nowrap;transition:all .18s ease}
+  .tab:hover{color:var(--sea)}
+  .panel{display:none;animation:fadein .25s ease}
+  @keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .panel .res{font-size:.9rem;color:var(--ink-soft);margin-top:.9rem;padding-left:.2rem}
+  #tab-dining:checked ~ .tablist label[for="tab-dining"],
+  #tab-attractions:checked ~ .tablist label[for="tab-attractions"],
+  #tab-shopping:checked ~ .tablist label[for="tab-shopping"],
+  #tab-baby:checked ~ .tablist label[for="tab-baby"]{background:var(--sea);color:#fff;border-color:var(--sea)}
+  #tab-dining:focus-visible ~ .tablist label[for="tab-dining"],
+  #tab-attractions:focus-visible ~ .tablist label[for="tab-attractions"],
+  #tab-shopping:focus-visible ~ .tablist label[for="tab-shopping"],
+  #tab-baby:focus-visible ~ .tablist label[for="tab-baby"]{outline:2px solid var(--coral);outline-offset:2px}
+  #tab-dining:checked ~ #panel-dining,
+  #tab-attractions:checked ~ #panel-attractions,
+  #tab-shopping:checked ~ #panel-shopping,
+  #tab-baby:checked ~ #panel-baby{display:block}
+
+  /* Directions map */
+  .mapwrap{margin-top:1rem;border:1px solid var(--line);border-radius:16px;padding:1rem;background:#fff}
+  .dirmap{width:100%;max-width:460px;height:auto;display:block;margin:0 auto;font-family:'DM Sans',system-ui,sans-serif}
 
   .callout{background:linear-gradient(135deg,rgba(95,211,194,.18),rgba(242,137,94,.1));border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.5rem;margin-top:1rem;display:flex;gap:.9rem;align-items:flex-start}
   .callout .ico{font-size:1.4rem;line-height:1}
@@ -139,8 +174,7 @@
       <a href="#contacts" data-sec="contacts"><span class="dot"></span>Contacts</a>
     </nav>
     <div class="foot">
-      <!-- EDIT: host contact -->
-      Questions? Text your host<br><strong>(555) 012-3456</strong>
+      Questions? Message us on the booking platform, or call/text <strong>(448) 488-4050</strong>.<br><a href="mailto:book@thewayvacations.com">book@thewayvacations.com</a>
     </div>
   </aside>
 
@@ -165,9 +199,8 @@
     <header class="hero" id="welcome">
       <div class="eyebrow">Welcome to</div>
       <h2>Pure DESTINation</h2>
-      <!-- EDIT: welcome copy -->
       <p>Sugar-white sand, that famous emerald water, and everything you need for an easy stay right below. Tap any section to jump straight to it.</p>
-      <span class="loc">◈ Destin, FL · The Emerald Coast</span>
+      <div class="address"><span class="loc">◈ Southbay by the Gulf · Destin, FL</span><strong>940 Hwy 98 E — Unit 80<br>Destin, FL 32541</strong><span class="addr-note">Handy for food delivery &amp; rideshares</span></div>
       <svg class="wave" viewBox="0 0 1440 46" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,24 C240,48 480,0 720,20 C960,40 1200,8 1440,26 L1440,46 L0,46 Z" fill="#FBFAF6"/>
       </svg>
@@ -177,14 +210,69 @@
     <section class="section" id="arrival">
       <div class="num">01</div>
       <h3>Check-in &amp; Wifi</h3>
-      <!-- EDIT: all values below -->
       <div class="grid">
-        <div class="card"><div class="label">Check-in</div><div class="value">After 4:00 PM</div><div class="sub">Self check-in — door code below</div></div>
-        <div class="card"><div class="label">Check-out</div><div class="value">By 10:00 AM</div><div class="sub">Just start the dishwasher on your way out</div></div>
-        <div class="card"><div class="label">Door Code</div><div class="value">2 4 6 8 #</div><div class="sub">Keypad at the unit door — press # to lock</div></div>
-        <div class="card"><div class="label">Wifi Network</div><div class="value">PureDestination_Guest</div><div class="sub">Password: emeraldwater</div></div>
+        <div class="card"><div class="label">Check-in</div><div class="value">On or after 4:00 PM</div><div class="sub">Self check-in</div></div>
+        <div class="card"><div class="label">Check-out</div><div class="value">By 10:00 AM</div><div class="sub">Empty the fridge, take out the trash, and start the dishwasher. Lock all doors &amp; windows on your way out.</div></div>
+        <div class="card"><div class="label">Door Code</div><div class="value">See check-in instructions</div><div class="sub">Your unique code arrives about 3 days before check-in and works only during your booking window. Enter the full code, including any symbols — the commercial-grade lock closes and locks itself automatically.</div></div>
+        <div class="card"><div class="label">Wifi Network</div><div class="value">pure-destination</div><div class="sub">Password: #Puredestinzen80</div></div>
       </div>
-      <div class="callout"><span class="ico">🅿️</span><div><strong>Parking:</strong> Two assigned covered spots in the garage. Bring the parking passes on the entry table up to your dash so you don't get ticketed.</div></div>
+      <div class="callout"><span class="ico">📍</span><div><strong>Finding the South entrance:</strong> Southbay has two entrances off Hwy 98 that share this address — you want the <strong>South entrance</strong>, where Unit 80 is, and it's easy to miss from the highway. Your turn is <strong>Sandprint Drive</strong>, directly across Hwy 98 from the <strong>Raceway gas station</strong>.<br><br><strong>Heading east</strong> (from Fort Walton Beach / Okaloosa Island): stay in the <strong>right lane</strong>. Pass Southbay's North entrance — the first entrance off Hwy 98 — and continue to the <strong>Sunsations plaza</strong>; Sandprint Drive is your <strong>right</strong> turn just past it. (The Raceway sits directly across the highway from the turn, but the median can hide it eastbound — go by Sunsations.)<br><br><strong>Heading west</strong> (from Miramar Beach / Sandestin): stay in the <strong>left lane</strong>. When the <strong>Raceway</strong> comes up on your right, turn <strong>left</strong> onto Sandprint Drive, directly across from it. If you pass the Raceway and see the <strong>98 Palms plaza</strong> on your right, you've just missed the turn — loop back.<br><br><strong>Then:</strong> follow Sandprint as it curves around the lake and <strong>dead-ends into the Southbay South entrance</strong> — ignore the other gated turnoffs along the way, which lead to other properties. At the entrance, a <strong>parking arm</strong> (not a gate) raises with the code from your check-in instructions.</div></div>
+
+      <div class="mapwrap">
+        <svg class="dirmap" viewBox="0 0 400 548" role="img" xmlns="http://www.w3.org/2000/svg">
+          <title>Directions to the Southbay South entrance via Sandprint Drive</title>
+          <!-- NORTH SIDE of Hwy 98 (above the road) -->
+          <!-- 98 Palms plaza: west of the turn — westbound "gone too far" cue -->
+          <rect x="6" y="8" width="185" height="38" rx="8" fill="#ECEAE0" stroke="rgba(10,97,87,.18)"/>
+          <text x="98" y="26" font-size="11" font-weight="600" fill="#4C6862" text-anchor="middle">98 Palms plaza</text>
+          <text x="98" y="40" font-size="9.5" font-weight="700" fill="#B7413A" text-anchor="middle">westbound: too far ✕</text>
+          <!-- Raceway: directly across from the Sandprint turn -->
+          <rect x="209" y="8" width="146" height="38" rx="19" fill="#F2895E"/>
+          <text x="282" y="26" font-size="12.5" font-weight="700" fill="#fff" text-anchor="middle">⛽ Raceway</text>
+          <text x="282" y="40" font-size="9" font-weight="600" fill="#fff" text-anchor="middle">across from the turn</text>
+          <!-- compass, in the clear top-right corner -->
+          <text x="392" y="30" font-size="12" font-weight="700" fill="#4C6862" text-anchor="end">N ↑</text>
+
+          <!-- Hwy 98 -->
+          <rect x="0" y="56" width="400" height="52" fill="#D6DEDB"/>
+          <line x1="0" y1="82" x2="400" y2="82" stroke="#fff" stroke-width="3" stroke-dasharray="16 12"/>
+          <text x="392" y="103" font-size="10" font-weight="700" fill="#5c6f6b" text-anchor="end">US-98</text>
+          <text x="10" y="74" font-size="11" font-weight="700" fill="#123B36">◀ Westbound · keep LEFT lane</text>
+          <text x="10" y="100" font-size="11" font-weight="700" fill="#123B36">Eastbound · keep RIGHT lane ▶</text>
+
+          <!-- SOUTH SIDE of Hwy 98 (below the road) — three cues in one row, against the highway -->
+          <!-- North entrance: pass it (text wrapped to two lines to save width) -->
+          <rect x="6" y="116" width="104" height="42" rx="8" fill="#ECEAE0" stroke="rgba(10,97,87,.18)"/>
+          <text x="58" y="132" font-size="10" font-weight="600" fill="#B7413A" text-anchor="middle">✕ North entrance</text>
+          <text x="58" y="146" font-size="9" font-weight="600" fill="#B7413A" text-anchor="middle">pass it</text>
+          <!-- Sunsations plaza: eastbound cue -->
+          <rect x="116" y="116" width="130" height="42" rx="8" fill="#ECEAE0" stroke="rgba(10,97,87,.18)"/>
+          <text x="181" y="132" font-size="10" font-weight="600" fill="#0A6157" text-anchor="middle">Sunsations plaza</text>
+          <text x="181" y="146" font-size="8.5" fill="#4C6862" text-anchor="middle">eastbound: turn right past</text>
+          <!-- Sandprint turn: to the right of Sunsations, against the road -->
+          <rect x="252" y="116" width="142" height="42" rx="12" fill="#0A6157"/>
+          <text x="323" y="134" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Turn onto</text>
+          <text x="323" y="148" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Sandprint Dr ▼</text>
+
+          <!-- Lake -->
+          <ellipse cx="195" cy="340" rx="135" ry="70" fill="#5FD3C2" fill-opacity=".4" stroke="#0F8274" stroke-opacity=".5"/>
+          <text x="195" y="344" font-size="12" font-weight="600" fill="#0A6157" text-anchor="middle">5-acre lake</text>
+
+          <!-- Sandprint route: from the turn, down the east side, clears the lake, wraps to the south entrance -->
+          <path d="M323,158 C356,184 360,250 358,322 C356,398 292,442 196,438 L170,437" fill="none" stroke="#0F8274" stroke-width="7" stroke-linecap="round"/>
+
+          <!-- South entrance + Southbay -->
+          <circle cx="167" cy="437" r="7" fill="#0A6157"/>
+          <rect x="24" y="450" width="352" height="50" rx="10" fill="#0A6157"/>
+          <text x="200" y="472" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Southbay — SOUTH entrance</text>
+          <text x="200" y="490" font-size="10.5" fill="#BEEFE6" text-anchor="middle">Unit 80 · parking arm, not a gate</text>
+
+          <!-- Gulf -->
+          <text x="200" y="528" font-size="11.5" font-weight="600" fill="#0F8274" text-anchor="middle">🏖 The Gulf ↓</text>
+        </svg>
+      </div>
+
+      <div class="callout"><span class="ico">🅿️</span><div><strong>Parking:</strong> Parking is in the complex's <strong>South lot</strong>, which needs a gate code for entry (included in your check-in instructions). Your unit has one reserved spot marked <strong>80</strong>, plus one unmarked guest spot — any guest spot in the lot works. Parking passes are provided in the unit; keep one displayed on your dashboard at all times.</div></div>
     </section>
 
     <!-- HOUSE -->
@@ -192,21 +280,24 @@
       <div class="num">02</div>
       <h3>House &amp; Appliances</h3>
       <div class="prose">
-        <!-- EDIT: house rules -->
         <p>A few small things to keep the place happy for you and the next guests:</p>
         <ul>
-          <li><strong>No smoking</strong> indoors — the balcony is all yours, please use the ashtray.</li>
-          <li><strong>Rinse the sand off</strong> at the ground-floor beach shower before coming up. Quartz sand gets everywhere!</li>
-          <li><strong>Quiet hours</strong> after 10 PM — sound carries between the units and over the water.</li>
-          <li><strong>Trash</strong> goes down the chute at the end of the hall; recycling bins are in the garage.</li>
+          <li><strong>No smoking or vaping</strong> inside the unit or on the patio.</li>
+          <li><strong>Quiet hours are 10 PM to 7 AM</strong> — set by the City of Destin and strictly enforced.</li>
+          <li><strong>Pool hours are 10 AM to 10 PM</strong>, and the pool closes promptly at 10.</li>
+          <li><strong>No pets</strong> in the pool, on the tennis/pickleball courts, or on the beach.</li>
+          <li><strong>Trash:</strong> bag and tie everything (including pizza boxes, cartons, and store bags) and set it at the end of the unit sidewalk by <strong>10 AM</strong> for daily pickup — never after 10 AM and never overnight. After 10 AM, take bags to the dumpster by the pickleball courts (right out the front door).</li>
         </ul>
-        <p>Appliance quick-notes:</p>
+        <p>Around the townhome:</p>
         <ul>
-          <li><strong>Thermostat</strong> is by the kitchen — please keep it at 72°F or higher when the A/C runs so it doesn't freeze up in the humidity.</li>
-          <li><strong>Beach gear</strong> (chairs, umbrella, cooler, boogie boards) is in the front closet.</li>
-          <li><strong>Washer/dryer</strong> is in the hall closet; pods are in the basket on the shelf.</li>
+          <li><strong>Thermostat</strong> is a Honeywell touchscreen in the corner near the sectional couch. Use the up/down arrows to change the temperature, or tap <strong>Mode</strong> to switch between heat, cool, and off, then <strong>Done</strong>.</li>
+          <li><strong>Beach gear:</strong> check the unlocked shed at the back of the patio for any beach extras. What's there changes from stay to stay — you may find a few beach chairs or odds and ends, but it's not guaranteed, so bring your own must-haves.</li>
+          <li><strong>Grill:</strong> the patio has a propane grill. Uncover it before lighting, and let it cool completely before re-covering. BBQ tools are in the shed, along with a spare propane tank in case the one on the grill runs empty mid-cookout.</li>
+          <li><strong>Patio string lights</strong> are controlled by the switch just inside, next to the patio door — please don't unplug them from the outside receptacle.</li>
+          <li><strong>Washer/dryer</strong> is the full-size unit in the main-floor closet by the front door; two starter pods are provided.</li>
         </ul>
       </div>
+      <div class="callout"><span class="ico">🏝️</span><div><strong>Pool &amp; courts:</strong> The pool is directly behind the building, across from Unit 80. Coming straight out the front door, enter from the <strong>right (south)</strong> side — no code needed; the <strong>left (north)</strong> gate needs the pool code from your check-in instructions. The tennis/pickleball court is straight ahead to the right out of the unit (court code also in your instructions). The pool is heated seasonally at the HOA's discretion — typically Thanksgiving week and from late December through New Year's, then off until it resumes around February–March. The HOA may turn the heat off at any time.</div></div>
     </section>
 
     <!-- BEACH SERVICE -->
@@ -214,58 +305,112 @@
       <div class="num">03</div>
       <h3>Beach Service</h3>
       <div class="prose">
-        <!-- EDIT: beach service details -->
-        <p>Beach service is included March through October — two loungers and an umbrella set up for you daily, so there's no dragging gear across the hot sand.</p>
+        <p>Free beach service is included with your stay March through October — two chairs and one umbrella set out for you daily, so there's no dragging gear across the hot sand.</p>
         <ul>
-          <li><strong>Where:</strong> Look for the attendant's chairs on the sand directly in front of the building.</li>
-          <li><strong>What's included:</strong> Two chairs and one umbrella, set out each morning by 9 AM.</li>
-          <li><strong>Just give the attendant the unit name</strong> — the set is reserved under Pure DESTINation.</li>
+          <li><strong>Where:</strong> A chair attendant is stationed on the sand. Just let them know you're staying in <strong>Unit 80</strong>.</li>
+          <li><strong>If the attendant isn't there:</strong> Feel free to take any empty set of chairs that doesn't have a tag on the back or towels laid across it — the attendant will come by to ask which unit you're in.</li>
+          <li><strong>What's included:</strong> Two chairs and one umbrella, set out each morning (seasonal, March–October).</li>
+          <li><strong>Beach access:</strong> About a 2-minute walk. Exit the unit, take a right, and head diagonally toward the left corner of the complex to reach the beach walkover.</li>
         </ul>
       </div>
-      <div class="callout"><span class="ico">🌊</span><div><strong>Beach flags matter here:</strong> green is calm, yellow is caution, red means dangerous surf, and double red means the water is closed. Destin flies them daily near the beach access — always check before you swim.</div></div>
+      <div class="callout"><span class="ico">⛱️</span><div><strong>Need more chairs?</strong> Your stay comes with one free setup (two chairs and one umbrella). Extra setups run <strong>$45/day</strong> for two chairs and an umbrella, with a price break for multiple days. Two ways to book through Sunset Beach Service:<br><br><strong>1 · Online:</strong> reserve at <a href="https://sunsetbeachservice.com/reserve-destin.htm" target="_blank" rel="noopener">sunsetbeachservice.com ↗</a> and be sure to select <strong>“Southbay”</strong> under “where are you staying.” The site has no field for a unit number, so <strong>message us once you've booked</strong> and we'll let them know it's for Unit 80.<br><br><strong>2 · By text:</strong> text <strong>Bill Monson</strong> at <a href="tel:+18505851577">(850) 585-1577</a> with your dates and the number of chairs, and mention you're staying at <strong>Southbay, Unit 80</strong>. They'll be set up and ready — pay on the beach.</div></div>
+      <div class="prose">
+        <p>The beach belongs to <strong>Southbay's owners and guests</strong>, and everyone using it follows the same HOA and county rules:</p>
+        <ul>
+          <li>No tents, and don't set personal chairs or umbrellas in front of the beach-service set (HOA rule).</li>
+          <li>No glass or breakable containers, and no pets (county ordinance).</li>
+          <li>No alcohol for anyone under 21 — the Sheriff's Department monitors this.</li>
+          <li>Fill in any holes you dig, and take everything with you at the end of the day; anything left is removed and disposed of (county ordinance).</li>
+        </ul>
+      </div>
+      <div class="callout"><span class="ico">🌊</span><div><strong>Beach flags matter here:</strong> green is calm, yellow is caution, red means dangerous surf, double red means the water is closed, and purple warns of dangerous marine life. Flags fly daily near the beach access — always check before you swim. Want daily flag updates by text? Text <strong>BEACH</strong> to <strong>44144</strong>.</div></div>
     </section>
 
     <!-- LOCAL -->
     <section class="section" id="local">
       <div class="num">04</div>
       <h3>Food &amp; Local Favorites</h3>
-      <p class="prose" style="margin-bottom:1.1rem">Welcome to the World's Luckiest Fishing Village. The Destin Harbor and HarborWalk Village are the heart of the action — here are a few local favorites to point you in the right direction:</p>
-      <div class="rec">
-        <div class="rec-item"><span class="tag eat">Eat</span><div><h4>Dewey Destin's Seafood</h4><p>Family-run since the 1940s by the family the town is named for. A no-frills waterside shack with some of the freshest fish around. Cash is king — bring some.</p></div></div>
-        <div class="rec-item"><span class="tag eat">Eat</span><div><h4>The Back Porch</h4><p>A Destin classic since 1974 and the birthplace of the amberjack sandwich. Casual, right on the Gulf, unbeatable water views.</p></div></div>
-        <div class="rec-item"><span class="tag eat">Eat</span><div><h4>Boshamps Seafood &amp; Oyster House</h4><p>Southern-style Gulf-to-table on the harbor with a big outdoor deck and live music on weekends. Great for groups.</p></div></div>
-        <div class="rec-item"><span class="tag sip">Sip</span><div><h4>The Edge SkyBar</h4><p>Rooftop bar over the harbor — arrive about 30 minutes before sunset for a seat. Live music most nights.</p></div></div>
-        <div class="rec-item"><span class="tag sip">Sip</span><div><h4>AJ's Seafood &amp; Oyster Bar</h4><p>Lively harborfront hangout — steam pots, Boom Boom Shrimp, and nightly live music. The go-to for a fun night out.</p></div></div>
-        <div class="rec-item"><span class="tag do">Do</span><div><h4>Crab Island</h4><p>The famous shallow sandbar just off the Destin bridge — rent a pontoon or catch a tour and float in the emerald shallows.</p></div></div>
-        <div class="rec-item"><span class="tag do">Do</span><div><h4>Henderson Beach State Park</h4><p>Protected sugar-white dunes and nature trails right in town — a quieter beach morning away from the crowds.</p></div></div>
-        <div class="rec-item"><span class="tag do">Do</span><div><h4>Deep-sea fishing charter</h4><p>It's the World's Luckiest Fishing Village for a reason. Half- and full-day charters leave from the harbor daily — book ahead in season.</p></div></div>
+      <p class="prose" style="margin-bottom:1.1rem">Welcome to the World's Luckiest Fishing Village. From harborfront seafood to family attractions, here's a curated shortlist — tap a category to explore.</p>
+
+      <div class="tabs">
+        <input type="radio" name="local" id="tab-dining" checked>
+        <input type="radio" name="local" id="tab-attractions">
+        <input type="radio" name="local" id="tab-shopping">
+        <input type="radio" name="local" id="tab-baby">
+        <div class="tablist" role="tablist">
+          <label class="tab" for="tab-dining">Dining</label>
+          <label class="tab" for="tab-attractions">Attractions</label>
+          <label class="tab" for="tab-shopping">Shopping</label>
+          <label class="tab" for="tab-baby">Baby Gear Rentals</label>
+        </div>
+
+        <!-- DINING -->
+        <div class="panel" id="panel-dining">
+          <div class="callout"><span class="ico">🚶</span><div><strong>Walk to Sunsations plaza:</strong> A lake walkover connects the complex to the Sunsations plaza on Hwy 98 (960 US-98, right next door) — an easy stroll for breakfast at The Pancakery, a bite at The Gulf Club, sweets at Sugar Planet or The Cone, or a browse through the Sunsations beach &amp; souvenir store.</div></div>
+          <div class="rec" style="margin-top:1rem">
+            <div class="rec-item"><span class="tag eat">Eat</span><div><h4>The Pancakery <span class="walkbadge">🚶 Walkable</span></h4><p>Award-winning breakfast &amp; brunch right in the Sunsations plaza — the closest bite to the unit, walkable via the lake walkover. 960 US-98.</p><p class="meta"><a href="tel:+18502690791">(850) 269-0791</a><a href="https://thepancakery.com/" target="_blank" rel="noopener">thepancakery.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag eat">Eat</span><div><h4>The Gulf Club <span class="walkbadge">🚶 Walkable</span></h4><p>Sports bar in the Sunsations plaza with elevated pub fare, cold beer, and nonstop sports — an easy walk over the lake. 960 US-98.</p><p class="meta"><a href="tel:+18505004853">(850) 500-4853</a><a href="https://thegulfclubdestin.com/" target="_blank" rel="noopener">thegulfclubdestin.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag eat">Eat</span><div><h4>Crackings</h4><p>Our personal favorite breakfast spot — homestyle breakfast, brunch, and lunch (try the Lobster Gouda Grits). 979 US-98 (0.6 mi).</p><p class="meta"><a href="tel:+18506500499">(850) 650-0499</a><a href="https://www.crackingsfl.com/" target="_blank" rel="noopener">crackingsfl.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag eat">Eat</span><div><h4>The Back Porch</h4><p>A Destin classic — Gulf-front seafood with indoor and patio dining. The crowd out front looks big, but they seat quickly. 1740 Scenic Hwy 98 (1.5 mi).</p><p class="meta"><a href="tel:+18508372022">(850) 837-2022</a><a href="https://www.theback-porch.com" target="_blank" rel="noopener">theback-porch.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag eat">Eat</span><div><h4>Louisiana Lagniappe</h4><p>Beloved Cajun-leaning seafood inside a gated community — just tell the gate attendant you're there for the restaurant. 775 Gulf Shore Dr (1.2 mi).</p><p class="meta"><a href="tel:+18508370881">(850) 837-0881</a><a href="https://www.thelouisianalagniappe.com" target="_blank" rel="noopener">thelouisianalagniappe.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag treat">Treat</span><div><h4>Sugar Planet <span class="walkbadge">🚶 Walkable</span></h4><p>Candy, premium chocolates, truffles, and ice cream in the Sunsations plaza — walkable over the lake. 960 US-98.</p><p class="meta"><a href="tel:+18508423187">(850) 842-3187</a><a href="https://sugarplanetus.com/" target="_blank" rel="noopener">sugarplanetus.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag treat">Treat</span><div><h4>The Cone Ice Cream <span class="walkbadge">🚶 Walkable</span></h4><p>Ice cream, shakes, and coffee in the Sunsations plaza — an easy walkover treat. 960 US-98.</p><p class="meta"><a href="tel:+18507373477">(850) 737-3477</a><a href="https://www.facebook.com/coneicecreamdestin/" target="_blank" rel="noopener">facebook.com ↗</a></p></div></div>
+          </div>
+          <p class="res">More options nearby: <a href="https://tinyurl.com/Restuarants-Near-Southbay" target="_blank" rel="noopener">Restaurants near Southbay ↗</a></p>
+        </div>
+
+        <!-- ATTRACTIONS -->
+        <div class="panel" id="panel-attractions">
+          <div class="rec">
+            <div class="rec-item"><span class="tag do">Do</span><div><h4>Destin HarborWalk Village</h4><p>The heart of the action — book charters and water sports, catch the pirate cruise, ride the zip line, or just shop and dine along the boardwalk. 34 Harbor Blvd.</p><p class="meta"><a href="https://destinflorida.com/things-to-do/harborwalk-village-destin-boardwalk" target="_blank" rel="noopener">destinflorida.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag do">Do</span><div><h4>Big Kahuna's Water &amp; Adventure Park</h4><p>Water slides, adventure rides, and more — a full day for the family. 1007 US-98.</p><p class="meta"><a href="https://bigkahunas.com/destin/attractions/water-park/" target="_blank" rel="noopener">bigkahunas.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag do">Do</span><div><h4>Gulfarium Marine Adventure Park</h4><p>Sealife shows and encounters — even swim with the dolphins. A short drive to Okaloosa Island. 1010 Miracle Strip Pkwy SE, Fort Walton Beach.</p><p class="meta"><a href="https://gulfarium.com/" target="_blank" rel="noopener">gulfarium.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag do">Do</span><div><h4>Okaloosa Island Boardwalk</h4><p>Dining, shopping, desserts, a playground, beach volleyball, live music, and a fishing pier. 1450 Miracle Strip Pkwy SE, Fort Walton Beach.</p><p class="meta"><a href="https://www.theboardwalkoi.com/" target="_blank" rel="noopener">theboardwalkoi.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag do">Do</span><div><h4>Air Force Armament Museum</h4><p>Free admission to view 29+ historic aircraft and artifacts — a great rainy-day stop. 100 Museum Dr, Eglin AFB.</p><p class="meta"><a href="http://www.afarmamentmuseum.com/" target="_blank" rel="noopener">afarmamentmuseum.com ↗</a></p></div></div>
+          </div>
+          <p class="res">More things to do: <a href="https://tinyurl.com/Southbay-Attractions" target="_blank" rel="noopener">Attractions near Southbay ↗</a></p>
+        </div>
+
+        <!-- SHOPPING -->
+        <div class="panel" id="panel-shopping">
+          <div class="rec">
+            <div class="rec-item"><span class="tag shop">Shop</span><div><h4>HarborWalk Village</h4><p>Waterfront shops and boutiques along the Destin Harbor boardwalk — easy to pair with dinner, a charter, or the evening buzz. 10 Harbor Blvd.</p><p class="meta"><a href="https://www.emeraldgrande.com/harborwalk-village/shopping" target="_blank" rel="noopener">emeraldgrande.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag shop">Shop</span><div><h4>Destin Commons</h4><p>Open-air center with national retailers, a movie theater, and casual dining — the big shopping stop in town. 4100 Legendary Dr.</p><p class="meta"><a href="https://destincommons.com/" target="_blank" rel="noopener">destincommons.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag shop">Shop</span><div><h4>Silver Sands Premium Outlets</h4><p>One of the country's largest designer outlet centers — 100+ brand-name stores at outlet prices, about 15 minutes east. 10562 Emerald Coast Pkwy W, Miramar Beach.</p><p class="meta"><a href="https://www.premiumoutlets.com/outlet/silver-sands" target="_blank" rel="noopener">premiumoutlets.com ↗</a></p></div></div>
+          </div>
+        </div>
+
+        <!-- BABY GEAR RENTALS -->
+        <div class="panel" id="panel-baby">
+          <p class="prose" style="margin-bottom:1rem">Traveling with little ones? These local companies deliver cribs, high chairs, strollers, car seats, beach gear, and more right to the unit — book ahead in season.</p>
+          <div class="rec">
+            <div class="rec-item"><span class="tag rent">Rental</span><div><h4>Crib Connection</h4><p>Serving Florida's Emerald Coast since 1999 — clean cribs, strollers, and high chairs delivered across Destin and 30A.</p><p class="meta"><a href="tel:+18506548890">(850) 654-8890</a><a href="https://cribconnection.com/destinflorida" target="_blank" rel="noopener">cribconnection.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag rent">Rental</span><div><h4>Baby's Away — Destin</h4><p>National baby-travel rental service: cribs, high chairs, strollers, car seats, and toys, delivered and picked up.</p><p class="meta"><a href="tel:+18502380506">(850) 238-0506</a><a href="tel:+18882819030">(888) 281-9030</a><a href="https://babysaway.com/locations/destin-fl" target="_blank" rel="noopener">babysaway.com ↗</a></p></div></div>
+            <div class="rec-item"><span class="tag rent">Rental</span><div><h4>Destin Crib Rentals</h4><p>Local since 1998 — clean, quality baby and child-care gear delivered and picked up across Destin, 30A, and Okaloosa Island.</p><p class="meta"><a href="tel:+18502257216">(850) 225-7216</a><a href="https://www.destincribrentals.com/" target="_blank" rel="noopener">destincribrentals.com ↗</a></p></div></div>
+          </div>
+        </div>
       </div>
-      <div class="callout"><span class="ico">🍩</span><div><strong>Sweet tip:</strong> Start a morning at the Donut Hole Bakery Café — a longtime Destin institution. Go early; the line moves but it builds.</div></div>
+
+      <div class="callout"><span class="ico">🛒</span><div><strong>Stock the fridge:</strong> Winn-Dixie (0.6 mi) and Target (0.8 mi) are closest, with a Walmart Supercenter (2.1 mi) and Publix (3.4 mi) a bit farther. Prefer to skip the store? Both <strong>Instacart</strong> and <strong>Walmart+</strong> deliver groceries right to the unit — handy for arrival day. When you order, tell the delivery service you're at the <strong>South entrance off Sandprint Drive</strong> and share your gate code so they can raise the parking arm.</div></div>
     </section>
 
     <!-- CONTACTS -->
     <section class="section" id="contacts">
       <div class="num">05</div>
       <h3>Contacts</h3>
-      <!-- EDIT: swap in your real numbers -->
       <div class="grid">
-        <div class="card"><div class="label">Your Host</div><div class="value">(555) 012-3456</div><div class="sub">Text is fastest — we usually reply within the hour</div></div>
-        <div class="card"><div class="label">Property Manager</div><div class="value">(555) 012-7890</div><div class="sub">Maintenance &amp; lockouts, 8 AM–8 PM</div></div>
+        <div class="card"><div class="label">Contact</div><div class="value">(448) 488-4050</div><div class="sub">Three ways to reach us: message us on the booking platform, or text or call (448) 488-4050 — text is fastest.</div></div>
         <div class="card"><div class="label">Emergencies</div><div class="value">911</div><div class="sub">Police, fire, medical</div></div>
-        <div class="card"><div class="label">Okaloosa Sheriff (non-emergency)</div><div class="value">(850) 651-7400</div><div class="sub">Noise, parking, minor issues</div></div>
-        <div class="card"><div class="label">Nearest ER</div><div class="value">HCA FW-Destin ER</div><div class="sub">Destin freestanding ER, Emerald Coast Pkwy — ~10 min</div></div>
+        <div class="card"><div class="label">Okaloosa County Sheriff (non-emergency)</div><div class="value">(850) 651-7410</div><div class="sub">Minor issues</div></div>
+        <div class="card"><div class="label">Nearest ER</div><div class="value">(850) 837-9194</div><div class="sub">HCA Florida Destin ER · 200 Tequesta Dr, Destin</div></div>
+        <div class="card"><div class="label">Urgent Care</div><div class="value">(850) 654-8878</div><div class="sub">Emerald Coast Urgent Care · Emerald Coast Pkwy</div></div>
         <div class="card"><div class="label">Ride</div><div class="value">Uber / Lyft</div><div class="sub">Both run Destin &amp; the harbor reliably</div></div>
-      </div>
-      <div class="callout"><span class="ico">📍</span>
-        <!-- EDIT: full property address -->
-        <div><strong>Property address:</strong> 000 Scenic Hwy 98, Unit 000, Destin, FL 32541. Handy for food delivery and rideshares.</div>
       </div>
     </section>
 
     <footer>
       <div class="name">Pure DESTINation</div>
-      <!-- EDIT: sign-off + contact -->
-      <p>We hope you have a wonderful stay on the Emerald Coast. Anything at all — text your host at (555) 012-3456.</p>
+      <p>We hope you have a wonderful stay on the Emerald Coast. Anything at all during your stay — message us on the booking platform or call/text (448) 488-4050.</p>
     </footer>
   </main>
 </div>
