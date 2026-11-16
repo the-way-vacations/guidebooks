@@ -13,10 +13,10 @@ property's guide. `build.py` turns it into one page per booking channel. Never c
 
 ```
 src/pure-destination.html     source for the Pure DESTINation guide (all channels)
+src/heaven-on-surf.html       source for the Heaven on Surf guide (all channels)
 build.py                      builds _site/ and runs the Airbnb policy check
 policy/airbnb-banned.txt      patterns that must never appear on an Airbnb page
 index.html                    landing page, copied to _site/ unchanged
-heaven-on-surf.html           not yet converted; copied to _site/ unchanged
 .github/workflows/pages.yml   runs build.py, deploys _site/
 _site/                        build output (git-ignored)
 ```
@@ -43,7 +43,7 @@ Content in a source file is shared by every channel unless it is wrapped in a ch
 Run `python build.py` (Python 3, no dependencies). It:
 
 1. Deletes and recreates `_site/`.
-2. Copies every top-level file that isn't build machinery (`index.html`, `heaven-on-surf.html`, ...)
+2. Copies every top-level file that isn't build machinery (`index.html`, ...)
    into `_site/` unchanged, and adds `.nojekyll`.
 3. For each `src/<name>.html`, writes one page per channel:
    - `_site/<name>.html` - `direct` blocks kept, `airbnb` blocks removed. Same URL as before the
@@ -94,8 +94,19 @@ Current Pure DESTINation values:
 - Okaloosa County Sheriff non-emergency: (850) 651-7400
 - Say "the Gulf" (never "Gulf of Mexico" or "Gulf of America")
 
+Current Heaven on Surf values:
+
+- Check-in 4:00 PM, check-out 10:00 AM
+- Quiet hours 10 PM-10 AM; pool 9 AM-10 PM
+- Max 6 guests; booking guest 25+
+- Trash: chute just past the elevators (turn left out the front door)
+- Parking: up to 2 vehicles, pass on the dash, open lot only (garage spaces are reserved)
+- Airbnb checkout requests: lock up; take your food and drinks; dishes in the dishwasher
+  (starting it optional); trash to the chute (optional)
+- Okaloosa County Sheriff non-emergency: (850) 651-7400
+
 ## Converting another guide
 
-To move `heaven-on-surf.html` onto the template: `git mv heaven-on-surf.html src/`, add channel
-blocks for its contact lines and checkout text, run `python build.py`, and fix every policy hit.
-Its URL stays the same and `heaven-on-surf-airbnb.html` appears next to it.
+`git mv <name>.html src/`, add channel blocks for its contact lines and checkout text, run
+`python build.py`, and fix every policy hit. Its URL stays the same and `<name>-airbnb.html`
+appears next to it. Both existing guides are converted.
