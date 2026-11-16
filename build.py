@@ -21,7 +21,7 @@ ROOT = Path(__file__).parent
 SRC, OUT = ROOT / "src", ROOT / "_site"
 CHANNELS = {"direct": "{name}.html", "airbnb": "{name}-airbnb.html"}
 BLOCK = re.compile(r"<!-- @only (\w+) -->(.*?)<!-- @end -->", re.S)
-COPY_SKIP = {"build.py", "README.md", "_site", "src", "policy", ".git", ".github"}
+COPY_SKIP = {"build.py", "README.md", "AGENTS.md", "_site", "src", "policy", ".git", ".github"}
 
 
 def render(text, channel):
