@@ -1,0 +1,36 @@
+# Regex patterns (case-insensitive) that must never appear in an *-airbnb.html page.
+# Airbnb house rules and requests policy (help 4168/4169), bookings from 20 Nov 2026.
+# A hit fails the GitHub Pages deploy. Add a pattern whenever a new violation is found.
+
+# Off-platform contact and direct booking
+488[\s.-]?4050
+tel:\+?1?448
+mailto:
+@thewayvacations
+thewayvacations\.com
+book direct
+text is fastest
+call/text
+text or call
+call or text
+booking platform
+index\.html
+
+# Chores named in the policy
+take out (all )?(the )?trash
+start the dishwasher
+strip (the )?beds?
+empty the fridge
+run the dishwasher
+do (the )?laundry
+
+# Fees, fines, deposits, ID, reviews
+\bfine[sd]?\b
+penalt
+security deposit
+damage deposit
+driver'?s license
+photo id
+government id
+leave (us )?a review
+5[- ]star

@@ -4,6 +4,8 @@ on:
   # Deploy on every push to main
   push:
     branches: [main]
+  # Check the build (incl. Airbnb policy lint) on pull requests
+  pull_request:
   # Allow manual runs from the Actions tab
   workflow_dispatch:
 
@@ -15,28 +17,42 @@ permissions:
 
 # Allow one concurrent deployment; don't cancel an in-progress run
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build channel pages and run the Airbnb policy check
+        run: python build.py
+
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the entire repository (static HTML)
-          path: .
+          path: _site
 
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
